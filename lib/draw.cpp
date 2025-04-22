@@ -134,3 +134,31 @@ void Draw::PutLine(int x1, int y1, int x2, int y2, Color_t color) {
       }
    }
 }
+
+
+void Draw::PutPCX(int xoff, int yoff, PCXbuffer *pcx) {
+   Coord_t x=0, y=0;
+
+   unsigned long int n;
+   unsigned long int total = (unsigned long)pcx->Width * (unsigned long)pcx->Height;
+
+   for (n=0; n<total; n++) {
+      mode->PutPixel(x+xoff, y+yoff, pcx->buffer[n]);
+
+      if (x < (pcx->Width-1)) {
+         x++;
+      } else {
+         x=0;
+         y++;
+      }
+   }
+
+   // Seems inefficient to re-set pallet each time img is drawn, let caller do it
+   // SetPallet(pcx);
+}
+
+
+void Draw::SetPallet(PCXbuffer *pcx) {
+   for (int i=0; i<256; i++)
+      mode->SetPalletReg(i, pcx->pallet.r[i]/4, pcx->pallet.g[i]/4, pcx->pallet.b[i]/4);
+}

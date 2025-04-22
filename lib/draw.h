@@ -12,6 +12,8 @@ Nov 19/99
 #define __DRAW_H
 
 #include "vga.h"
+#include "pcx.h"
+
 
 class Draw {
    private:
@@ -25,6 +27,9 @@ class Draw {
       void PutVLine(int y1, int y2, int x, Color_t color);
       void PutBox(int x1, int y1, int x2, int y2, Color_t color);
       void PutLine(int x1, int y1, int x2, int y2, Color_t color);
+
+      void PutPCX(int xoff, int yoff, PCXbuffer *pcx);
+      void SetPallet(PCXbuffer *pcx);
 
       inline void PutPixel(Coord_t x, Coord_t y, Color_t color) {
          mode->PutPixel(x, y, color);
