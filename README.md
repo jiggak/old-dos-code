@@ -30,10 +30,10 @@ There are make targets for each executable, and another to clean compiled files.
 
 Interrupt lists
 
-https://www.ctyme.com/intr/int.htm
-http://employees.oneonta.edu/higgindm/assembly/DOS_AND_ROM_BIOS_INTS.htm
-http://www.techhelpmanual.com/2-main_menu.html
+* https://www.ctyme.com/intr/int.htm
+* http://employees.oneonta.edu/higgindm/assembly/DOS_AND_ROM_BIOS_INTS.htm
+* http://www.techhelpmanual.com/2-main_menu.html
 
 About fonts in VGA ROM
 
-https://www.alexandrugroza.ro/microelectronics/essays-research/vga-rom-fonts/index.html
+* https://www.alexandrugroza.ro/microelectronics/essays-research/vga-rom-fonts/index.html
