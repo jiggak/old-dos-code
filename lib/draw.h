@@ -25,6 +25,14 @@ class Draw {
       void PutVLine(int y1, int y2, int x, Color_t color);
       void PutBox(int x1, int y1, int x2, int y2, Color_t color);
       void PutLine(int x1, int y1, int x2, int y2, Color_t color);
+
+      inline void PutPixel(Coord_t x, Coord_t y, Color_t color) {
+         mode->PutPixel(x, y, color);
+      }
+
+      inline void PutHLine(Coord_t x1, Coord_t x2, Coord_t y, Color_t color) {
+         mode->PutHLine(x1, x2, y, color);
+      }
 };
 
 #endif
