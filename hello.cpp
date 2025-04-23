@@ -9,9 +9,9 @@ void main()
    Font font(mode);
 
    while (!kbhit()) {
-      mode->Cls(100);
+      mode->Cls(5);
 
-      font.PutS(100, 100, "Hello, World!", 56);
+      font.PutS(100, 100, "Hello, World!", 10);
 
       mode->ShowScreen();
    }

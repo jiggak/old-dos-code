@@ -122,6 +122,13 @@ void VgaMode::GetPalletReg(Color_t colorID, char &red, char &green, char &blue) 
 }
 
 
+void VgaMode::SetPallet(PalletReg pallet[256]) {
+   for (int i=0; i<256; i++) {
+      SetPalletReg(i, pallet[i].r/4, pallet[i].g/4, pallet[i].b/4);
+   }
+}
+
+
 void UnChain(void) {
    // Turn off the Chain-4 bit (bit 3 at index 4, port 0x3c4) //
    outport(0x3c4, 0x0604);

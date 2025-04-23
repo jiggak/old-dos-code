@@ -6,11 +6,11 @@ changes: 1. (v2)object oriented
             (v2.5)class Draw controls all
             (v3)class draw gets an address to a valid vga class
 
-MCGA (320x200x256) chained
-UN_MCGA (320x200x256) un-chained
-MODEX (320x240x256) un-chained
-VESA (640x400x256) un-chained
-TEXT standard text mode
+MCGA (320x200x256) chained [13h]
+UN_MCGA (320x200x256) un-chained [13h]
+MODEX (320x240x256) un-chained [13h]
+VESA (640x400x256) un-chained [100h]
+TEXT standard text mode [3h]
 
 Virtual Screen based functions, (memory buffer)
 
@@ -27,19 +27,11 @@ Virtual Screen based functions, (memory buffer)
 typedef unsigned short int Coord_t;
 typedef unsigned char Color_t;
 
-/*
-typedef struct ModeNums
-   {
-   int
-      TEXT = 0x03, // mode 3h
-      MCGA = 0x0013, // mode 13h
-      UN_MCGA = 0x0013, // mode 13h
-      MODEX = 0x0013, // mode 13h
-      VESA = 0x0100; // mode 100h
-   } ModeNums;
-*/
-
-// enum Modes { TEXT,MCGA,UN_MCGA,MODEX,VESA };
+typedef struct {
+   unsigned char r;
+   unsigned char g;
+   unsigned char b;
+} PalletReg;
 
 class VgaMode {
    public:
@@ -55,8 +47,9 @@ class VgaMode {
       void Cls(Color_t color);
 
       // Pallet manipulating functions
-      void GetPalletReg(Color_t colorID, char &red, char &green, char &blue);
       void SetPalletReg(Color_t colorID, char red ,char green, char blue);
+      void GetPalletReg(Color_t colorID, char &red, char &green, char &blue);
+      void SetPallet(PalletReg pallet[256]);
 
       inline Coord_t ScreenWidth() { return screenWidth; }
       inline Coord_t ScreenHeight() { return screenHeight; }
@@ -66,7 +59,7 @@ class VgaMode {
       Coord_t screenWidth;
       Coord_t screenHeight;
 
-      // MCGA,UN_MCGA,MODEX,VESA Buffers
+      // MCGA,MODEY,MODEX,VESA Buffers
       // MCGA only uses Buffer[0]
       char far *buffer[4];
 

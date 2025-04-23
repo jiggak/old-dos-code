@@ -1,31 +1,19 @@
 #ifndef __PCX_H
 #define __PCX_H
 
-
-typedef struct Pallet { // 256 color pallet structure
-   unsigned char r[256];
-   unsigned char g[256];
-   unsigned char b[256];
-} Pallet;
-
-
-typedef struct PalletReg { // pallet register structure
-   unsigned char r;
-   unsigned char g;
-   unsigned char b;
-} PalletReg;
+#include "vga.h"
 
 
 // structure to hold ALL image info
-typedef struct PCXbuffer {
+typedef struct {
    unsigned char far *buffer;
    unsigned short int Width;
    unsigned short int Height;
-   Pallet pallet;
+   PalletReg pallet[256];
 } PCXbuffer;
 
 // pcx file header
-typedef struct PCXhead {
+typedef struct {
    unsigned char manuf; // manufacturer
    unsigned char version; // version number 0=v2.5 2=v2.8(pallet)
                           // 3=v2.8(no pallet) 4=paint(v5) 5=v3> (24 bit)

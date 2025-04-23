@@ -159,6 +159,5 @@ void Draw::PutPCX(int xoff, int yoff, PCXbuffer *pcx) {
 
 
 void Draw::SetPallet(PCXbuffer *pcx) {
-   for (int i=0; i<256; i++)
-      mode->SetPalletReg(i, pcx->pallet.r[i]/4, pcx->pallet.g[i]/4, pcx->pallet.b[i]/4);
+   mode->SetPallet(pcx->pallet);
 }

@@ -37,3 +37,11 @@ Interrupt lists
 About fonts in VGA ROM
 
 * https://www.alexandrugroza.ro/microelectronics/essays-research/vga-rom-fonts/index.html
+
+Good resource on various graphics related things
+
+* https://web.archive.org/web/20140702154140/http://www.brackeen.com/vga/index.html
+
+About VGA registers (e.g. color palette)
+
+* https://wiki.osdev.org/VGA_Hardware
